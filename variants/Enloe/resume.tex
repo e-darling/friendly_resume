@@ -1,0 +1,125 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	 SETUP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[letterpaper]{../../deedy-resume}
+\usepackage{geometry}
+\geometry{
+	left=0.6in,
+	right=0.6in,
+	bottom=0in,
+	top=0.5in
+}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{fontspec}
+\defaultfontfeatures{
+    Path = /usr/local/texlive/2018/texmf-dist/fonts/opentype/public/fontawesome/ }
+\usepackage{fontawesome}
+
+\raggedbottom
+
+\pagestyle{empty}
+\pagenumbering{gobble}
+\setlist{nolistsep}
+
+\newfontfamily\fatest{FontAwesome.otf}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	 DEFINITIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{navy}{HTML}{303848}
+\definecolor{gold}{HTML}{bf9268}
+
+\newcommand\blt[1]{\mbox{\hspace{1ex}\textbullet{} #1}}
+% a circle around the argument
+\newcommand*\ci[2]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=#1pt] (char) {#2};}}
+\newcommand*\namelocgeo[4]{
+	\textit{#1}\\
+	\hspace*{-1ex}\textbf{\begin{tabular}{l@{ \color{gold}\textbullet\ }l@{ \color{gold}\textbullet\ }l} 
+		#2 & #3 & #4 
+	\end{tabular}
+	}
+}
+% a box with horizontal line behind
+\def\headline#1{{\Huge\hbox to \hsize{\hrulefill\quad\lower.3em\hbox{#1}\quad\hrulefill}}}
+% make \itemsep and others globally changed
+\let\OLDitemize\itemize
+\renewcommand\itemize{\OLDitemize\addtolength{\leftmargin}{-5ex}}
+
+\def\faPhone{\fatest\char"F095}
+\def\faEmail{\fatest\char"F0E0}
+   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	 WHOAMI
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{Julia Hoff}
+\def\email{jlhoff57@berkeley.edu}
+\def\phone{(530) 228-9646}
+\def\address{\vtop{\hbox{\strut 4554 Garden Brook Dr.}\hbox{\strut Chico, CA 95973}}}
+\begin{document}
+\makeatletter
+\providecommand*{\input@path}{}
+\g@addto@macro\input@path{{../../components/}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	 HEADER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\large
+\input{header}
+\section{OBJECTIVE} \begin{center}\input{objective}\end{center}
+\vspace*{-0.5em}  % Insert vertical retraction for next section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	 COLUMN ONE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% change \section format
+\titleformat{\section}[display]
+{\filcenter\Large\normalfont\sffamily\color{white}}
+{}
+{0pt}
+{
+	{
+		\color{gold}
+		\centeredruleline{\centering{\color{navy}#1}}
+	}
+}
+% background color
+\noindent\fcolorbox{gray!40}{gray!40}{%
+\begin{minipage}[t][.65\textheight]{0.37\textwidth}
+	\vspace*{-0.5em}  % Insert vertical retraction for next section
+	\section{EDUCATION} \input{education}
+	\section{CERTIFICATIONS} \input{certifications}
+\end{minipage}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	 SPACING
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}[t]{0.03\textwidth} 
+	\hfill
+\end{minipage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	 COLUMN TWO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% change \section format
+\titleformat{\section}[display]
+{\filcenter\Large\normalfont\sffamily\color{white}}
+{}
+{0pt}
+{
+	{
+		\color{gold}
+		\centeredruleline{\colorbox{navy}{\centering\parbox[c][1.5em]{50mm}{\centering{\color{white}#1}}}}
+	}
+}
+\begin{minipage}[t]{0.59\textwidth} 
+	\vspace*{-1em}\section{EXPERIENCE} \input{experience}
+	\section{ADDITIONAL SKILLS} \input{additional-skills}
+\end{minipage} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	 FOOTER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{footer}
+\end{document}

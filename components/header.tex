@@ -1,0 +1,32 @@
+\begin{figure} 
+\centering
+\makeatletter
+\begin{tikzpicture}[overlay,remember picture,font=\huge]
+\node[
+	below,
+	minimum width={\paperwidth},
+	minimum height={0.13\paperwidth},
+	fill=gray!40,
+] at (current page.north) {};
+\node[
+	below,
+	align=center,
+	minimum width={0.8\paperwidth},
+	minimum height={0.08\paperwidth},
+	draw=gold,
+  	line width=1mm,
+	fill=white,
+	text=navy
+] at (0,0) {\@author};
+\end{tikzpicture}
+\makeatother
+\end{figure}
+
+\rule[-.3\baselineskip]{0pt}{3\baselineskip}
+
+\begin{tabular*}{\textwidth}{rlrlrl}
+	\ci{2}{\faHome} & \address & \rule{1em}{0pt}\ci{2}{\faPhone} & \phone & \rule{2em}{0pt}\ci{2}{\faEmail} & \email
+\end{tabular*} 
+
+\vspace*{-1.5em}% Insert needed vertical retraction for next section
+
