@@ -1,2 +1,6 @@
 # friendly_resume
-Résumé for a friend
+Version-controlled résumé for a friend.
+
+## usage
+To use, install XeLaTeX. 
+Run XeLaTeX twice on the chosen variant. 
